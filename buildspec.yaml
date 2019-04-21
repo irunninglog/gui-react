@@ -15,13 +15,13 @@ phases:
             - npm run build
             - docker build -t irunninglog/gui-react:latest .
             - docker tag irunninglog/gui-react:latest 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui-react:latest 
-#    post_build:
-#        commands:
-#            - echo Build completed on `date`
-#            - echo Pushing the Docker image...
-#            - docker push 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui:latest
-#            - printf '[{"name":"irunninglog-gui","imageUri":"%s"}]' 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui:latest > imagedefinitions.json
+    post_build:
+        commands:
+            - echo Build completed on `date`
+            - echo Pushing the Docker image...
+            - docker push 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui-react:latest
+            - printf '[{"name":"gui-react","imageUri":"%s"}]' 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui-react:latest > imagedefinitions.json
 
-#artifacts:
-#  files:
-#    - imagedefinitions.json
+artifacts:
+  files:
+    - imagedefinitions.json
