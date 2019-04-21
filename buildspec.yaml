@@ -7,16 +7,14 @@ phases:
             - $(aws ecr get-login --no-include-email --region us-east-1)
     install:
         commands:
-#            - echo Installing source NPM dependencies...
+            - echo Installing source NPM dependencies...
             - npm install
-#            - npm install -g @angular/cli
     build:
         commands:
             - echo Build started on `date`
             - npm run build
-#            - ng build --aot --prod
-#            - docker build -t irunninglog/gui:latest .
-#            - docker tag irunninglog/gui:latest 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui:latest 
+            - docker build -t irunninglog/gui-react:latest .
+            - docker tag irunninglog/gui-react:latest 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui-react:latest 
 #    post_build:
 #        commands:
 #            - echo Build completed on `date`
