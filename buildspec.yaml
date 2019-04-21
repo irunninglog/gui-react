@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+    pre_build:
+        commands:
+            - echo Logging in to Amazon ECR...
+            - $(aws ecr get-login --no-include-email --region us-east-1)
+    install:
+        commands:
+#            - echo Installing source NPM dependencies...
+            - npm install
+#            - npm install -g @angular/cli
+    build:
+        commands:
+            - echo Build started on `date`
+            - npm run build
+#            - ng build --aot --prod
+#            - docker build -t irunninglog/gui:latest .
+#            - docker tag irunninglog/gui:latest 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui:latest 
+#    post_build:
+#        commands:
+#            - echo Build completed on `date`
+#            - echo Pushing the Docker image...
+#            - docker push 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui:latest
+#            - printf '[{"name":"irunninglog-gui","imageUri":"%s"}]' 329192577320.dkr.ecr.us-east-1.amazonaws.com/irunninglog/gui:latest > imagedefinitions.json
+
+#artifacts:
+#  files:
+#    - imagedefinitions.json
